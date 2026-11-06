@@ -1533,7 +1533,7 @@ a {
     align-items: center;
     justify-content: center;
     vertical-align: middle;
-    font-size: 1px;
+    font-size: 6px;
     margin-left: 8px;
     animation: none;
 }
@@ -1572,8 +1572,8 @@ a {
 /* PNG PANAH - UKURAN KECIL */
 .round-arrow img {
     display: block;
-    width: 10px !important;
-    height: 10px !important;
+    width: 15px !important;
+    height: 15px !important;
     object-fit: contain;
     animation: arrowMove 1.5s ease-in-out infinite;
 }
