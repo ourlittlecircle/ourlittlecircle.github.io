@@ -1545,4 +1545,78 @@ a {
         display: block;
     }
 }
+   
+/* =================================
+   ANIMASI PNG HERO
+================================= */
+
+/* BINTANG BERPUTAR */
+.asterisk {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.asterisk img {
+    display: block;
+    width: 0.8em;
+    height: 0.8em;
+    object-fit: contain;
+    animation: starRotate 8s linear infinite;
+}
+
+@keyframes starRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* PANAH BERGERAK */
+.round-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.round-arrow img {
+    display: block;
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    animation: arrowMove 1.5s ease-in-out infinite;
+}
+
+@keyframes arrowMove {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(5px, 5px);
+    }
+}
+
+/* HP */
+@media (max-width: 768px) {
+    .asterisk img {
+        width: 0.7em;
+        height: 0.7em;
+    }
+
+    .round-arrow img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Mengurangi animasi jika pengguna memilihnya */
+@media (prefers-reduced-motion: reduce) {
+    .asterisk img,
+    .round-arrow img {
+        animation: none;
+    }
+}
+
 }
