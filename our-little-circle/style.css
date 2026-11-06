@@ -1,0 +1,1512 @@
+/* =====================================================
+   OUR LITTLE CIRCLE
+   Main Stylesheet
+   ===================================================== */
+
+
+/* 1. FONT & WARNA UTAMA
+   ===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+    --bg: #10110f;
+    --panel: #191b17;
+    --text: #f0f0e9;
+    --muted: #999b91;
+    --lime: #c8ff36;
+    --line: rgba(240, 240, 233, 0.2);
+
+    --mono: "DM Mono", monospace;
+    --sans: "Space Grotesk", sans-serif;
+}
+
+
+/* 2. RESET DASAR
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+::selection {
+    background: var(--lime);
+    color: var(--bg);
+}
+
+
+/* 3. EFEK BACKGROUND
+   ===================================================== */
+
+.noise {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+    opacity: 0.055;
+
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+.cursor-glow {
+    position: fixed;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(200, 255, 54, 0.08),
+        transparent 68%
+    );
+
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+}
+
+
+/* 4. NAVIGATION / HEADER
+   ===================================================== */
+
+.topbar {
+    height: 86px;
+    padding: 0 5vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid var(--line);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 30;
+
+    background: rgba(16, 17, 15, 0.75);
+    backdrop-filter: blur(14px);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 10px;
+    line-height: 1.05;
+    letter-spacing: 0.12em;
+}
+
+.brand b {
+    color: var(--lime);
+    font-weight: 600;
+}
+
+.brand-mark {
+    font-size: 29px;
+    color: var(--lime);
+}
+
+.top-note,
+.nav,
+.hero-meta,
+.eyebrow,
+.section-kicker,
+.hero-description,
+.round-link,
+.hero-stamp,
+.ticker,
+.side-caption,
+.edit-hint,
+.manifesto-top,
+.manifesto-bottom,
+.timeline-date,
+.closing-eyebrow,
+.closing-copy,
+.back-top,
+.footer,
+.hand-note {
+    font-family: var(--mono);
+}
+
+.top-note {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.live-dot {
+    width: 7px;
+    height: 7px;
+
+    background: var(--lime);
+    border-radius: 50%;
+
+    box-shadow: 0 0 12px var(--lime);
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
+
+    font-size: 10px;
+    letter-spacing: 0.12em;
+}
+
+.nav a {
+    transition: color 0.25s;
+}
+
+.nav a:hover {
+    color: var(--lime);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 0;
+}
+
+
+/* 5. LAYOUT UMUM
+   ===================================================== */
+
+.section-pad {
+    padding-left: 9vw;
+    padding-right: 9vw;
+    position: relative;
+}
+
+
+/* 6. HERO SECTION
+   ===================================================== */
+
+.hero {
+    min-height: 790px;
+    height: 100vh;
+    max-height: 1000px;
+
+    padding-top: 145px;
+    padding-bottom: 65px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    overflow: hidden;
+}
+
+.hero-meta,
+.section-kicker,
+.manifesto-top,
+.manifesto-bottom {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 9px;
+    letter-spacing: 0.13em;
+    color: var(--muted);
+}
+
+.hero-meta span:first-child {
+    color: var(--lime);
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--lime);
+    margin-bottom: 24px;
+}
+
+.hero-title {
+    font-size: clamp(90px, 16vw, 245px);
+    line-height: 0.76;
+    letter-spacing: -0.105em;
+    font-weight: 600;
+
+    position: relative;
+    z-index: 1;
+}
+
+.title-line {
+    display: block;
+    white-space: nowrap;
+}
+
+.title-line-two {
+    padding-left: 12vw;
+}
+
+.hero-title em {
+    font-style: normal;
+    color: var(--lime);
+}
+
+.asterisk {
+    font-size: 0.32em;
+    display: inline-block;
+    vertical-align: top;
+
+    margin: 0 0 0 0.2em;
+
+    color: var(--lime);
+    animation: spin 18s linear infinite;
+}
+
+.hero-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    position: relative;
+    z-index: 2;
+}
+
+.hero-description {
+    font-size: 12px;
+    line-height: 1.8;
+    color: #b9bbb1;
+}
+
+.round-link {
+    width: 105px;
+    height: 105px;
+
+    border: 1px solid var(--line);
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    text-align: center;
+
+    transition:
+        background 0.3s,
+        color 0.3s,
+        border 0.3s;
+}
+
+.round-link b {
+    font-size: 22px;
+    font-family: var(--sans);
+    font-weight: 400;
+}
+
+.round-link:hover {
+    background: var(--lime);
+    color: var(--bg);
+    border-color: var(--lime);
+}
+
+.hero-stamp {
+    position: absolute;
+    right: 5vw;
+    top: 42%;
+
+    font-size: 9px;
+    line-height: 1.7;
+    text-align: center;
+    color: var(--muted);
+
+    transform: rotate(8deg);
+
+    border: 1px solid var(--line);
+    padding: 12px;
+}
+
+
+/* 7. TICKER / TEKS BERJALAN
+   ===================================================== */
+
+.ticker {
+    background: var(--lime);
+    color: var(--bg);
+
+    overflow: hidden;
+    padding: 17px 0;
+
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+}
+
+.ticker-track {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 35px;
+
+    min-width: max-content;
+
+    animation: marquee 28s linear infinite;
+}
+
+.ticker i {
+    font-style: normal;
+    font-size: 18px;
+}
+
+
+/* 8. INTRO / STORY SECTION
+   ===================================================== */
+
+.intro {
+    padding-top: 145px;
+    padding-bottom: 160px;
+}
+
+.section-kicker {
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 8vw;
+
+    padding-top: 75px;
+}
+
+.section-heading {
+    font-size: clamp(58px, 8.4vw, 125px);
+    line-height: 0.86;
+    letter-spacing: -0.085em;
+    font-weight: 600;
+}
+
+.section-heading em {
+    font-style: normal;
+    color: var(--lime);
+}
+
+.intro-copy {
+    padding-top: 12px;
+    max-width: 440px;
+}
+
+.big-copy {
+    font-size: clamp(20px, 2.3vw, 31px);
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+}
+
+.intro-copy > p:nth-child(2) {
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--muted);
+    max-width: 370px;
+}
+
+.hand-note {
+    display: block;
+    color: var(--lime);
+
+    font-size: 11px;
+    margin-top: 40px;
+
+    transform: rotate(-5deg);
+    width: max-content;
+}
+
+
+/* 9. PEOPLE / MEMBER SECTION
+   ===================================================== */
+
+.people {
+    padding-top: 35px;
+    padding-bottom: 150px;
+
+    background: #151713;
+}
+
+.section-title-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    padding: 65px 0 55px;
+}
+
+.side-caption {
+    font-size: 10px;
+    line-height: 1.9;
+    color: var(--muted);
+    padding-bottom: 8px;
+}
+
+.member-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.member-card {
+    min-width: 0;
+}
+
+.member-visual {
+    height: 370px;
+
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: transform 0.5s;
+}
+
+.member-card:hover .member-visual {
+    transform: translateY(-7px);
+}
+
+.visual-one {
+    background: #d5d4c8;
+    color: #171914;
+}
+
+.visual-two {
+    background: #b5c0a3;
+    color: #171914;
+}
+
+.visual-three {
+    background: #b8b2c8;
+    color: #171914;
+}
+
+.member-number {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+
+    font: 10px var(--mono);
+}
+
+.visual-symbol {
+    font-size: clamp(100px, 15vw, 190px);
+    line-height: 1;
+
+    transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.member-card:hover .visual-symbol {
+    transform: rotate(25deg) scale(1.12);
+}
+
+.visual-label {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c8ff36;
+  text-shadow: 0 0px 0px rgba(0, 0, 0, 0.5);
+}
+
+.member-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 17px 2px 0;
+}
+
+.member-info h3 {
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+}
+
+.member-info p {
+    font: 10px var(--mono);
+    color: var(--muted);
+    margin-top: 5px;
+}
+
+.member-arrow {
+    font-size: 22px;
+    color: var(--lime);
+}
+
+.edit-hint {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-top: 30px;
+}
+
+.edit-hint code {
+    color: var(--lime);
+}
+
+
+/* 10. FOTO PROFIL TEMAN
+   ===================================================== */
+
+.member-visual img {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.7s ease;
+}
+
+.member-card:hover .member-visual img {
+    transform: scale(1.06);
+}
+
+.member-number,
+.visual-label {
+    z-index: 2;
+}
+
+
+/* 11. MANIFESTO SECTION
+   ===================================================== */
+
+.manifesto {
+    padding-top: 85px;
+    padding-bottom: 90px;
+
+    background: var(--lime);
+    color: var(--bg);
+}
+
+.manifesto-top,
+.manifesto-bottom {
+    color: rgba(16, 17, 15, 0.7);
+}
+
+.manifesto-text {
+    font-size: clamp(65px, 11vw, 160px);
+    line-height: 0.85;
+    letter-spacing: -0.09em;
+    font-weight: 600;
+
+    padding: 100px 0 90px;
+}
+
+.manifesto-text em {
+    font-style: normal;
+
+    -webkit-text-stroke: 1.5px var(--bg);
+    color: transparent;
+}
+
+.manifesto-bottom {
+    font-size: 9px;
+}
+
+
+/* =====================================================
+   12. MEMORIES / GALLERY SECTION
+   ===================================================== */
+
+.moments {
+    padding-top: 145px;
+    padding-bottom: 150px;
+}
+
+.memory-grid {
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 18px;
+    align-items: start;
+}
+
+.memory-large {
+    grid-row: span 2;
+}
+
+.memory-card p {
+    font: 9px var(--mono);
+    letter-spacing: 0.06em;
+    margin-top: 13px;
+    color: #d6d7cf;
+}
+
+.memory-card p span {
+    color: var(--muted);
+}
+
+.memory-placeholder {
+    height: 245px;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    font: 11px/1.5 var(--mono);
+    letter-spacing: 0.12em;
+}
+
+.memory-large .memory-placeholder {
+    height: 510px;
+}
+
+.placeholder-a {
+    background: linear-gradient(135deg, #343a2a, #78815a);
+    color: #e6ebd8;
+}
+
+.placeholder-b {
+    background: linear-gradient(135deg, #423a38, #a27e6c);
+    color: #f0ded2;
+}
+
+.placeholder-c {
+    background: linear-gradient(135deg, #2e3c42, #77949a);
+    color: #e0eeee;
+}
+
+.memory-placeholder::after {
+    display: none !important;
+    content: none !important;
+}
+
+.memory-placeholder b {
+    position: absolute;
+    bottom: 15px;
+    right: 17px;
+    font: 10px var(--mono);
+    z-index: 2;
+}
+
+
+/* =====================================================
+   13. FOTO GALERI KENANGAN
+   ===================================================== */
+
+.memory-placeholder img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.7s ease;
+}
+
+.memory-card:hover img {
+    transform: scale(1.04);
+}
+
+
+
+/* =====================================================
+   14. THE STORY THAT STAYS
+   ===================================================== */
+
+.timeline-section {
+    position: relative;
+    overflow: hidden;
+    background: #151713;
+    padding: 130px 8% 150px;
+}
+
+/* INTRO */
+
+.timeline-intro {
+    max-width: 850px;
+    margin: 0 auto 110px;
+}
+
+.section-label {
+    display: block;
+    color: var(--lime);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    margin-bottom: 30px;
+}
+
+.timeline-intro h2 {
+    color: #f0f0e8;
+    font-size: clamp(38px, 6vw, 76px);
+    line-height: 1.05;
+    letter-spacing: -0.065em;
+    font-weight: 500;
+}
+
+.timeline-intro h2 em {
+    color: var(--lime);
+    font-style: normal;
+}
+
+.timeline-description {
+    max-width: 480px;
+    margin-top: 28px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2;
+}
+
+/* STORY TIMELINE */
+
+.story-timeline {
+    position: relative;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* Vertical line */
+
+.story-timeline::before {
+    content: "";
+    position: absolute;
+    top: 12px;
+    bottom: 30px;
+    left: 25px;
+    width: 1px;
+    background: rgba(200, 255, 54, 0.25);
+}
+
+/* Chapter */
+
+.story-chapter {
+    position: relative;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 35px;
+    padding-bottom: 85px;
+}
+
+/* Chapter number */
+
+.chapter-marker {
+    position: relative;
+    z-index: 2;
+    width: 51px;
+    height: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(200, 255, 54, 0.5);
+    border-radius: 50%;
+    background: #151713;
+    color: var(--lime);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+}
+
+/* Chapter text */
+
+.chapter-content {
+    padding-top: 5px;
+}
+
+.chapter-label {
+    display: block;
+    margin-bottom: 17px;
+    color: var(--lime);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+}
+
+.chapter-content h3 {
+    color: #eeeeE6;
+    font-size: clamp(21px, 3vw, 30px);
+    font-weight: 500;
+    letter-spacing: -0.045em;
+    line-height: 1.3;
+}
+
+.chapter-content p {
+    max-width: 590px;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2.1;
+}
+
+/* CLOSING QUOTE */
+
+.timeline-quote {
+    max-width: 850px;
+    margin: 35px auto 0;
+    padding: 65px 0 0;
+    border-top: 1px solid var(--line);
+}
+
+.quote-label {
+    display: block;
+    margin-bottom: 30px;
+    color: var(--lime);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+}
+
+.timeline-quote h3 {
+    color: #eeeeE6;
+    font-size: clamp(32px, 5.5vw, 64px);
+    font-weight: 500;
+    letter-spacing: -0.06em;
+    line-height: 1.12;
+}
+
+.timeline-quote h3 em {
+    color: var(--lime);
+    font-style: normal;
+}
+
+.timeline-quote p {
+    max-width: 470px;
+    margin-top: 27px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2;
+}
+
+.quote-signature {
+    display: block;
+    margin-top: 45px;
+    color: var(--lime);
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+}
+
+/* RESPONSIVE - TABLET & HP */
+
+@media (max-width: 768px) {
+
+    .timeline-section {
+        padding: 90px 7% 100px;
+    }
+
+    .timeline-intro {
+        margin-bottom: 75px;
+    }
+
+    .story-timeline::before {
+        left: 19px;
+    }
+
+    .story-chapter {
+        grid-template-columns: 40px 1fr;
+        gap: 20px;
+        padding-bottom: 65px;
+    }
+
+    .chapter-marker {
+        width: 39px;
+        height: 39px;
+        font-size: 10px;
+    }
+
+    .chapter-content h3 {
+        font-size: 22px;
+    }
+
+    .chapter-content p {
+        font-size: 12px;
+        line-height: 1.9;
+    }
+
+    .timeline-quote {
+        padding-top: 45px;
+    }
+
+    .quote-signature {
+        line-height: 1.8;
+    }
+}
+
+
+/* 15. CLOSING SECTION
+   ===================================================== */
+
+.closing {
+    min-height: 690px;
+
+    padding-top: 115px;
+    padding-bottom: 75px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.closing-eyebrow {
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.13em;
+}
+
+.closing-title {
+    font-size: clamp(90px, 16vw, 220px);
+    line-height: 0.72;
+    letter-spacing: -0.11em;
+
+    margin: 70px 0 50px;
+}
+
+.closing-title em {
+    font-style: normal;
+    color: var(--lime);
+}
+
+.closing-title span {
+    font-size: 0.25em;
+    color: var(--lime);
+    vertical-align: top;
+
+    display: inline-block;
+
+    animation: spin 18s linear infinite;
+}
+
+.closing-copy {
+    font-size: 11px;
+    line-height: 1.9;
+    color: var(--muted);
+}
+
+.back-top {
+    margin-top: 50px;
+
+    border-bottom: 1px solid var(--lime);
+    padding-bottom: 8px;
+
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    color: var(--lime);
+}
+
+
+/* 16. FOOTER
+   ===================================================== */
+
+.footer {
+    min-height: 75px;
+
+    border-top: 1px solid var(--line);
+
+    padding: 20px 5vw;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+    letter-spacing: 0.08em;
+}
+
+.footer-brand {
+    font: 600 12px var(--sans);
+    color: var(--text);
+    letter-spacing: -0.03em;
+}
+
+.footer-brand span {
+    color: var(--lime);
+    font-size: 8px;
+    vertical-align: top;
+    margin-left: 3px;
+}
+
+
+/* 17. ANIMASI REVEAL
+   ===================================================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* 18. KEYFRAMES
+   ===================================================== */
+
+@keyframes marquee {
+    to {
+        transform: translateX(-25%);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* 19. RESPONSIVE TABLET
+   ===================================================== */
+
+@media (max-width: 800px) {
+
+    .topbar {
+        height: 72px;
+    }
+
+    .top-note {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        padding: 10px;
+        z-index: 3;
+    }
+
+    .menu-toggle span {
+        width: 25px;
+        height: 1px;
+
+        background: var(--text);
+        display: block;
+    }
+
+    .nav {
+        display: none;
+
+        position: absolute;
+        top: 71px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 25px 8vw 30px;
+
+        background: #151713;
+
+        flex-direction: column;
+        gap: 22px;
+
+        border-bottom: 1px solid var(--line);
+    }
+
+    .nav.open {
+        display: flex;
+    }
+
+    .nav a {
+        font-size: 12px;
+    }
+
+    .section-pad {
+        padding-left: 7vw;
+        padding-right: 7vw;
+    }
+
+    .hero {
+        min-height: 720px;
+        height: 94svh;
+
+        padding-top: 130px;
+        padding-bottom: 55px;
+    }
+
+    .hero-title {
+        font-size: clamp(74px, 17vw, 145px);
+    }
+
+    .title-line-two {
+        padding-left: 4vw;
+    }
+
+    .hero-stamp {
+        right: 7vw;
+        top: 32%;
+        font-size: 7px;
+    }
+
+    .intro {
+        padding-top: 100px;
+        padding-bottom: 110px;
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+
+        padding-top: 55px;
+    }
+
+    .section-heading {
+        font-size: clamp(58px, 12vw, 95px);
+    }
+
+    .section-title-row {
+        padding: 48px 0 38px;
+        gap: 20px;
+        align-items: flex-end;
+    }
+
+    .member-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .member-card:last-child {
+        grid-column: 1 / -1;
+        width: calc(50% - 8px);
+    }
+
+    .member-visual {
+        height: 300px;
+    }
+
+    .visual-symbol {
+        font-size: 130px;
+    }
+
+    .manifesto-text {
+        padding: 75px 0;
+        font-size: clamp(65px, 12vw, 110px);
+    }
+
+    .moments {
+        padding-top: 100px;
+        padding-bottom: 110px;
+    }
+
+    .memory-large .memory-placeholder {
+        height: 390px;
+    }
+
+    .memory-placeholder {
+        height: 185px;
+    }
+
+    .timeline-section {
+        padding-top: 90px;
+        padding-bottom: 110px;
+    }
+
+    .timeline-item {
+        grid-template-columns: 110px 12px 1fr;
+        gap: 13px;
+    }
+
+    .closing {
+        min-height: 580px;
+    }
+
+    .footer {
+        flex-wrap: wrap;
+    }
+
+    .footer span:nth-child(2) {
+        display: none;
+    }
+}
+
+
+/* 20. RESPONSIVE HP
+   ===================================================== */
+
+@media (max-width: 520px) {
+
+    .hero {
+        min-height: 670px;
+    }
+
+    .hero-meta {
+        font-size: 7px;
+    }
+
+    .hero-title {
+        font-size: 17vw;
+    }
+
+    .hero-description {
+        font-size: 10px;
+    }
+
+    .round-link {
+        width: 85px;
+        height: 85px;
+        font-size: 7px;
+    }
+
+    .section-kicker {
+        font-size: 7px;
+    }
+
+    .section-title-row {
+        display: block;
+    }
+
+    .side-caption {
+        margin-top: 22px;
+    }
+
+    .member-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .member-visual {
+        height: 220px;
+    }
+
+    .visual-symbol {
+        font-size: 95px;
+    }
+
+    .member-info h3 {
+        font-size: 13px;
+    }
+
+    .member-info p {
+        font-size: 8px;
+    }
+
+    .visual-label {
+        font-size: 8px;
+    }
+
+    .member-card:last-child {
+        width: 100%;
+        grid-column: auto;
+    }
+
+    .manifesto-top,
+    .manifesto-bottom {
+        font-size: 7px;
+        gap: 15px;
+    }
+
+    .manifesto-bottom {
+        flex-direction: column;
+    }
+
+    .memory-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+
+    .memory-large {
+        grid-column: 1 / -1;
+        grid-row: auto;
+    }
+
+    .memory-large .memory-placeholder {
+        height: 330px;
+    }
+
+    .memory-placeholder {
+        height: 150px;
+    }
+
+    .memory-card p {
+        font-size: 7px;
+        line-height: 1.6;
+    }
+
+    .timeline-item {
+        grid-template-columns: 1fr 12px 1.8fr;
+        gap: 9px;
+    }
+
+    .timeline-date {
+        font-size: 7px;
+    }
+
+    .timeline-item h3 {
+        font-size: 14px;
+    }
+
+    .timeline-item p {
+        font-size: 10px;
+    }
+
+    .closing-title {
+        font-size: 21vw;
+    }
+
+    .footer {
+        font-size: 7px;
+        padding: 18px 7vw;
+    }
+
+    .footer-brand {
+        font-size: 11px;
+    }
+}
+
+
+/* 21. AKSESIBILITAS
+   ===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+    
+/* =================================
+   OUR LITTLE CIRCLE - PHOTO SYSTEM
+================================= */
+
+/* MEMBER PHOTO */
+
+.member-visual {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #252720;
+}
+
+.member-visual > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+  transition: transform 0.7s ease;
+}
+
+.member-card:hover .member-visual > img {
+  transform: scale(1.07);
+}
+
+.member-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.05) 70%
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
+.member-number,
+.visual-label,
+.visual-symbol {
+  position: relative;
+  z-index: 1;
+}
+
+/* MEMORY PHOTO */
+
+.memory-placeholder {
+  position: relative;
+  overflow: hidden;
+}
+
+.memory-placeholder img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.7s ease;
+}
+
+.memory-card:hover .memory-placeholder img {
+  transform: scale(1.05);
+}
+
+.memory-placeholder b {
+  position: absolute;
+  z-index: 2;
+  top: 15px;
+  right: 15px;
+}
+
+/* IMAGE RESPONSIVE */
+
+@media (max-width: 768px) {
+  .member-visual > img,
+  .memory-placeholder img {
+    object-position: center;
+  }
+}
+
+/* IMAGE SMOOTH LOADING */
+
+.member-visual img,
+.memory-placeholder img {
+  backface-visibility: hidden;
+}
+
+}
