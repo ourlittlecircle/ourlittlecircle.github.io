@@ -1398,11 +1398,12 @@ a {
 }
 
 
-/* 21. AKSESIBILITAS
-   ===================================================== */
+
+/* =====================================================
+   21. AKSESIBILITAS
+===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -1415,105 +1416,102 @@ a {
         opacity: 1;
         transform: none;
     }
-    
-/* =================================
-   OUR LITTLE CIRCLE - PHOTO SYSTEM
-================================= */
+}
 
-/* MEMBER PHOTO */
+
+/* =====================================================
+   22. MEMBER PHOTO SYSTEM
+===================================================== */
 
 .member-visual {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  background: #252720;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: #252720;
 }
 
 .member-visual > img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: -1;
-  transition: transform 0.7s ease;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    transition: transform 0.7s ease;
 }
 
 .member-card:hover .member-visual > img {
-  transform: scale(1.07);
+    transform: scale(1.06);
 }
 
 .member-visual::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.7),
-    rgba(0, 0, 0, 0.05) 70%
-  );
-  z-index: -1;
-  pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.05) 70%
+    );
+    z-index: 1;
+    pointer-events: none;
 }
 
 .member-number,
 .visual-label,
 .visual-symbol {
-  position: relative;
-  z-index: 1;
+    position: relative;
+    z-index: 2;
 }
 
-/* MEMORY PHOTO */
+
+/* =====================================================
+   23. MEMORY PHOTO SYSTEM
+===================================================== */
 
 .memory-placeholder {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 .memory-placeholder img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  transition: transform 0.7s ease;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.7s ease;
 }
 
 .memory-card:hover .memory-placeholder img {
-  transform: scale(1.05);
+    transform: scale(1.04);
 }
 
 .memory-placeholder b {
-  position: absolute;
-  z-index: 2;
-  top: 15px;
-  right: 15px;
+    position: absolute;
+    z-index: 2;
+    top: 15px;
+    right: 15px;
 }
 
-/* IMAGE RESPONSIVE */
 
-@media (max-width: 768px) {
-  .member-visual > img,
-  .memory-placeholder img {
-    object-position: center;
-  }
+/* =====================================================
+   24. ICON RESPONSIVE
+===================================================== */
+
+/* Desktop */
+.icon-desktop {
+    display: inline-block;
 }
-
-/* IMAGE SMOOTH LOADING */
-
-.member-visual img,
-.memory-placeholder img {
-  backface-visibility: hidden;
-}
-/* ICON RESPONSIVE LAPTOP DAN HP */
 
 .icon-mobile {
     display: none;
 }
 
+/* HP */
 @media (max-width: 768px) {
     .icon-desktop {
         display: none;
@@ -1523,65 +1521,99 @@ a {
         display: inline-block;
     }
 }
-   /* PNG ARROW RESPONSIVE */
 
-.round-arrow img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    display: block;
+
+/* =====================================================
+   25. PNG STAR
+===================================================== */
+
+.asterisk {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    font-size: 0.32em;
+    margin-left: 0.2em;
+    color: var(--lime);
+    animation: none;
 }
 
-.round-arrow .icon-mobile {
-    display: none;
-}
-
-@media (max-width: 768px) {
-    .round-arrow .icon-desktop {
-        display: none;
-    }
-
-    .round-arrow .icon-mobile {
-        display: block;
-    }
-}
-   
-/* =================================
-   ANIMASI PNG HERO
-================================= */
-
-/* BINTANG */
 .asterisk img {
     display: block;
-    width: 12px;
-    height: 12px;
+    width: 1em;
+    height: 1em;
+    max-width: 100%;
     object-fit: contain;
-    animation: starRotate 8s linear infinite;
+    animation: starRotate 18s linear infinite;
 }
 
-/* PANAH */
+@keyframes starRotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =====================================================
+   26. PNG ARROW
+===================================================== */
+
+.round-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 400;
+}
+
 .round-arrow img {
     display: block;
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
+    max-width: 100%;
     object-fit: contain;
     animation: arrowMove 1.5s ease-in-out infinite;
 }
 
-/* UKURAN HP */
-@media (max-width: 768px) {
-    .asterisk img,
-    .round-arrow img {
-        width: 10px;
-        height: 10px;
+@keyframes arrowMove {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(3px, 3px);
     }
 }
-/* Mengurangi animasi jika pengguna memilihnya */
+
+
+/* =====================================================
+   27. ICON RESPONSIVE HP
+===================================================== */
+
+@media (max-width: 768px) {
+    .asterisk img {
+        width: 1em;
+        height: 1em;
+    }
+
+    .round-arrow img {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+
+/* =====================================================
+   28. REDUCED MOTION UNTUK PNG
+===================================================== */
+
 @media (prefers-reduced-motion: reduce) {
     .asterisk img,
     .round-arrow img {
         animation: none;
     }
-}
-
 }
