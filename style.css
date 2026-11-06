@@ -1523,4 +1523,26 @@ a {
         display: inline-block;
     }
 }
+   /* PNG ARROW RESPONSIVE */
+
+.round-arrow img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    display: block;
+}
+
+.round-arrow .icon-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .round-arrow .icon-desktop {
+        display: none;
+    }
+
+    .round-arrow .icon-mobile {
+        display: block;
+    }
+}
 }
