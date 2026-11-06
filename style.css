@@ -1550,34 +1550,30 @@ a {
    ANIMASI PNG HERO
 ================================= */
 
-/* UKURAN PNG BINTANG */
+/* BINTANG */
 .asterisk img {
     display: block;
-    width: 0.45em;
-    height: 0.45em;
+    width: 12px;
+    height: 12px;
     object-fit: contain;
     animation: starRotate 8s linear infinite;
 }
 
-/* UKURAN PNG PANAH */
+/* PANAH */
 .round-arrow img {
     display: block;
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
     object-fit: contain;
     animation: arrowMove 1.5s ease-in-out infinite;
 }
 
-/* UKURAN DI HP */
+/* UKURAN HP */
 @media (max-width: 768px) {
-    .asterisk img {
-        width: 0.4em;
-        height: 0.4em;
-    }
-
+    .asterisk img,
     .round-arrow img {
-        width: 14px;
-        height: 14px;
+        width: 10px;
+        height: 10px;
     }
 }
 /* Mengurangi animasi jika pengguna memilihnya */
