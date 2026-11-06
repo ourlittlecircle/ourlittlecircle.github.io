@@ -1508,5 +1508,19 @@ a {
 .memory-placeholder img {
   backface-visibility: hidden;
 }
+/* ICON RESPONSIVE LAPTOP DAN HP */
 
+.icon-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .icon-desktop {
+        display: none;
+    }
+
+    .icon-mobile {
+        display: inline-block;
+    }
+}
 }
