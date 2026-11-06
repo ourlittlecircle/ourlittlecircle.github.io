@@ -1527,22 +1527,21 @@ a {
    25. PNG STAR
 ===================================================== */
 
+/* PNG BINTANG - UKURAN KECIL */
 .asterisk {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     vertical-align: middle;
-    font-size: 0.32em;
-    margin-left: 0.2em;
-    color: var(--lime);
+    font-size: 1px;
+    margin-left: 8px;
     animation: none;
 }
 
 .asterisk img {
     display: block;
-    width: 1em;
-    height: 1em;
-    max-width: 100%;
+    width: 18px !important;
+    height: 18px !important;
     object-fit: contain;
     animation: starRotate 18s linear infinite;
 }
@@ -1570,11 +1569,11 @@ a {
     font-weight: 400;
 }
 
+/* PNG PANAH - UKURAN KECIL */
 .round-arrow img {
     display: block;
-    width: 16px;
-    height: 16px;
-    max-width: 100%;
+    width: 10px !important;
+    height: 10px !important;
     object-fit: contain;
     animation: arrowMove 1.5s ease-in-out infinite;
 }
